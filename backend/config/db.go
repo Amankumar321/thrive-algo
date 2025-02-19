@@ -19,10 +19,7 @@ func ConnectDB() {
 	defer cancel()
 
 	// Load environment variables from .env file
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	godotenv.Load()
 
 	// Get the MongoDB URI from the environment
 	mongoURI := os.Getenv("MONGODB_URI")
