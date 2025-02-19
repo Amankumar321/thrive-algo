@@ -29,28 +29,37 @@ const Home = () => {
     }
   };
 
-  // Group holidays by month and year
   const groupHolidaysByMonthYear = () => {
-    const grouped = {};
-
+    const groups = [];
+  
     holidays.forEach((holiday) => {
       const date = new Date(holiday.date);
       const monthYear = date.toLocaleString('default', { month: 'long', year: 'numeric' });
-
-      if (!grouped[monthYear]) {
-        grouped[monthYear] = [];
+  
+      // Check if the group for the current month-year already exists
+      let group = groups.find((g) => g.label === monthYear);
+  
+      if (!group) {
+        // If no group exists, create a new one
+        group = { label: monthYear, holidays: [] };
+        groups.push(group);
       }
-
-      grouped[monthYear].push(holiday);
+  
+      // Add the holiday to the group
+      group.holidays.push(holiday);
     });
-
-    // Sort holidays by date within each month-year group
-    Object.keys(grouped).forEach((key) => {
-      grouped[key].sort((a, b) => new Date(a.date) - new Date(b.date));
+  
+    // Sort each group’s holidays by date
+    groups.forEach((group) => {
+      group.holidays.sort((a, b) => new Date(a.date) - new Date(b.date));
     });
-
-    return grouped;
+  
+    // Optionally, sort the groups by date (oldest month first)
+    groups.sort((a, b) => new Date(a.holidays[0].date) - new Date(b.holidays[0].date));
+  
+    return groups;
   };
+  
 
   const groupedHolidays = groupHolidaysByMonthYear();
 
@@ -67,11 +76,11 @@ const Home = () => {
         <h1 className="text-2xl font-bold mb-12 mt-2 sm:mt-4 flex justify-center text-crimson tracking-wide">
           Holiday List
         </h1>
-        {Object.keys(groupedHolidays).map((monthYear) => (
-          <div key={monthYear} className="w-full mb-6">
-            <h3 className="text-lg font-semibold border-b border-gray-300 pb-2 mb-4">{monthYear}</h3>
+        {groupedHolidays.map((group) => (
+          <div key={group.label} className="w-full mb-6">
+            <h3 className="text-lg font-semibold border-b border-gray-300 pb-2 mb-4">{group.label}</h3>
             <ul className="space-y-2 w-full">
-              {groupedHolidays[monthYear].map((holiday) => (
+              {group.holidays.map((holiday) => (
                 <li
                   key={holiday.id}
                   className="w-full flex items-center justify-between bg-gray-50 p-2"
