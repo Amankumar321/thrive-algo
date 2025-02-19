@@ -7,14 +7,10 @@ This is a full-stack holiday calendar application that allows users to view, add
 ## Table of Contents
 - [Features](#features)
 - [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
   - [Backend Setup](#backend-setup)
   - [Frontend Setup](#frontend-setup)
 - [API Endpoints](#api-endpoints)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -43,13 +39,15 @@ This is a full-stack holiday calendar application that allows users to view, add
 
 ### Backend Setup
 1. Ensure you have Go installed. (Version 1.18+ recommended)
-2. Install MongoDB and ensure it is running locally on `localhost:27017`.
+2. Install MongoDB.
 3. Clone the repository:
    ```bash
    git clone https://github.com/your-username/thrive-algo.git
    cd thrive-algo/backend
 4. Create a .env file with the following content:
+```bash
 MONGODB_URI=mongodb://localhost:27017
+```
 5. Install Go dependencies:
 ```bash
 go mod tidy
@@ -80,20 +78,20 @@ npm start
 
 1. Get All Holidays
 
-Endpoint: GET /api/holidays
+Endpoint: GET `/api/holidays`\
 Description: Returns a list of all holidays.
 
 2. Add a Holiday
 
-Endpoint: POST /api/holidays
+Endpoint: POST `/api/holidays`\
 Request Body:
-{
+`{
   "date": "2024-02-24",
   "name": "New Holiday"
-}
+}`
 Description: Adds a new holiday.
 
 3. Delete a Holiday
 
-Endpoint: DELETE /api/holidays/{id}
+Endpoint: DELETE `/api/holidays/{id}`\
 Description: Deletes a holiday by its ID.
