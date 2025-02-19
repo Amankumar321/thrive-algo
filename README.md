@@ -2,8 +2,6 @@
 
 This is a full-stack holiday calendar application that allows users to view, add, and delete holidays for a 5-year range (2024-2029). The project is divided into two parts: `backend` (built with Go and MongoDB) and `frontend` (built with React and Tailwind CSS).
 
----
-
 ## Table of Contents
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -12,8 +10,6 @@ This is a full-stack holiday calendar application that allows users to view, add
   - [Frontend Setup](#frontend-setup)
 - [API Endpoints](#api-endpoints)
 
----
-
 ## Features
 - View holidays in a monthly calendar (like Google Calendar).
 - Add holidays with a custom name.
@@ -21,19 +17,12 @@ This is a full-stack holiday calendar application that allows users to view, add
 - Pagination between months with a 5-year range (2024-2029).
 - Display a list of holidays grouped by month and year.
 
----
-
 ## Tech Stack
 - **Frontend:** React, Tailwind CSS
 - **Backend:** Go (Golang), MongoDB
 - **Database:** MongoDB
 - **State Management:** React Hooks
 - **API Testing:** Go’s `httptest`
-
----
-
-
----
 
 ## Getting Started
 
@@ -88,7 +77,7 @@ Request Body:
 `{
   "date": "2024-02-24",
   "name": "New Holiday"
-}`
+}`\
 Description: Adds a new holiday.
 
 3. Delete a Holiday
